@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogInPage.AuthenticateController">
+   <items>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="userName" layoutX="215.0" layoutY="180.0" />
+            <PasswordField fx:id="pass" layoutX="215.0" layoutY="240.0" />
+            <Button fx:id="logInButton" defaultButton="true" layoutX="269.0" layoutY="304.0" mnemonicParsing="false" onAction="#logIn" text="Log In" />
+            <Label layoutX="100.0" layoutY="180.0" prefHeight="20.0" prefWidth="101.0" text="Username:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="240.0" prefHeight="15.0" prefWidth="101.0" text="Password:" textAlignment="RIGHT">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="authLabel" layoutX="217.0" layoutY="276.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="newAccountPane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="New User?" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font size="33.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newUsername" layoutX="16.0" layoutY="81.0" />
+            <PasswordField fx:id="newPass" layoutX="16.0" layoutY="142.0" />
+            <PasswordField fx:id="confirmPass" layoutX="16.0" layoutY="200.0" />
+            <Label layoutX="16.0" layoutY="66.0" text="Choose Username" />
+            <Label layoutX="16.0" layoutY="127.0" text="Choose Password" />
+            <Label layoutX="16.0" layoutY="185.0" text="Confirm Password" />
+            <Button layoutX="69.0" layoutY="255.0" mnemonicParsing="false" onAction="#createAccount" text="Sign Up" />
+            <Label fx:id="notificationLabel" layoutX="17.0" layoutY="230.0" textFill="#e10606" />
+         </children>
+      </Pane>
+   </items>
+</SplitPane>
