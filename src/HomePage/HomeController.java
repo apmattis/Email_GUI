@@ -1,5 +1,6 @@
 package HomePage;
 
+import LogInPage.AuthenticateController;
 import LogInPage.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,17 +21,18 @@ import java.util.List;
 public class HomeController {
 
 
-    public Label messageStatus;
+    private String path = String.format("out/%s/inbox", AuthenticateController.getUser());
     private List<String> fList = new ArrayList<>();
-    private File[] files = new File("out/inbox").listFiles();
+    private File[] files = new File(path).listFiles();
 
+    public Label messageStatus;
     public TextField toAddrField;
     public TextField subjectField;
     public TextArea messageField;
     public Button sendButton;
     public Tab inboxTab;
     public ListView<String> inboxList;
-    public VBox fileSelection;
+    private VBox fileSelection;
     public GridPane inboxPane;
     public TabPane tabPane;
 
@@ -43,12 +45,15 @@ public class HomeController {
 
     }
 
-    public void tabEventHandler(){
+    private void tabEventHandler(){
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
             if(inboxTab == newTab && fList.isEmpty()) {
                 try {
                     Main.cm.sendStringData("GET");
                     Main.cm.receiveFile();
+
+
+
 
                     for(File file : files){
                         fList.add(file.getName());
@@ -57,8 +62,7 @@ public class HomeController {
                     inboxList = new ListView<>(fileNames);
                     inboxList.setOrientation(Orientation.VERTICAL);
 
-                    inboxList.getSelectionModel().selectedItemProperty().addListener((ov, oldvalue, newvalue) ->
-                            messageChanged(ov, oldvalue, newvalue));
+                    inboxList.getSelectionModel().selectedItemProperty().addListener(this::messageChanged);
 
                     fileSelection = new VBox();
                     fileSelection.getChildren().addAll(inboxList);
@@ -71,32 +75,29 @@ public class HomeController {
         });
     }
 
-    public void messageChanged (ObservableValue<? extends String> observable,String oldValue,String newValue)
+    private void messageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue)
 
     {
 
 
         //String oldText = oldValue == null ? "null" : oldValue.toString();
 
-        String newText = newValue == null ? "null" : newValue.toString();
+        String newText = newValue == null ? "null" : newValue;
         messageField.clear();
 
-        ArrayList<File> fileArrayList = new ArrayList<File>(Arrays.asList(files));
-        try(BufferedReader br = new BufferedReader(new FileReader("out/inbox/" + newText))) {
-            String line = null;
+        try(BufferedReader br = new BufferedReader(new FileReader(String.format("%s/%s", path, newText)))) {
+            String line;
             while((line = br.readLine()) != null){
                 messageField.appendText(line);
                 messageField.appendText("\n");
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
 
-    };
+    }
 
     public void sendMessage(ActionEvent actionEvent) {
         try {
@@ -104,7 +105,7 @@ public class HomeController {
             String toAddr = toAddrField.getText(),
                     subject = subjectField.getText(),
                     message = messageField.getText(),
-                    auth = null;
+                    auth;
             Main.cm.sendStringData(toAddr);
             Main.cm.sendStringData(subject);
             Main.cm.sendStringData(message);
