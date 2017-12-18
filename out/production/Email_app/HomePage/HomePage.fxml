@@ -27,7 +27,22 @@
       </MenuBar>
       <TabPane fx:id="tabPane" layoutX="14.0" layoutY="42.0" prefHeight="388.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
         <tabs>
-            <Tab onSelectionChanged="#getMessages" text="Home" />
+            <Tab fx:id="composeTab" closable="false" onSelectionChanged="#getMessages" text="Compose">
+               <content>
+                  <AnchorPane fx:id="sendMessage" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ChoiceBox layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Label layoutX="136.0" layoutY="19.0" text="To:" />
+                        <TextField fx:id="toAddrField" layoutX="221.0" layoutY="14.0" prefHeight="25.0" prefWidth="343.0" />
+                        <Label layoutX="136.0" layoutY="65.0" text="Subject:" />
+                        <TextField fx:id="subjectField" layoutX="221.0" layoutY="60.0" prefHeight="25.0" prefWidth="343.0" />
+                        <TextArea fx:id="messageField" layoutX="14.0" layoutY="101.0" prefHeight="205.0" prefWidth="551.0" />
+                        <Button fx:id="sendButton" defaultButton="true" layoutX="503.0" layoutY="316.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="62.0" text="Send" />
+                        <Label fx:id="messageStatus" layoutX="122.0" layoutY="321.0" />
+                        <Button layoutX="393.0" layoutY="316.0" mnemonicParsing="false" text="Save As Draft" />
+                     </children>
+                  </AnchorPane>
+               </content></Tab>
             <Tab fx:id="inboxTab" onSelectionChanged="#getMessages" text="Inbox">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -63,22 +78,6 @@
                         <ListView />
                      </children>
                   </GridPane>
-               </content></Tab>
-            <Tab fx:id="composeTab" closable="false" text="Compose">
-               <content>
-                  <AnchorPane fx:id="sendMessage" prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <ChoiceBox layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
-                        <Label layoutX="136.0" layoutY="19.0" text="To:" />
-                        <TextField fx:id="toAddrField" layoutX="221.0" layoutY="14.0" prefHeight="25.0" prefWidth="343.0" />
-                        <Label layoutX="136.0" layoutY="65.0" text="Subject:" />
-                        <TextField fx:id="subjectField" layoutX="221.0" layoutY="60.0" prefHeight="25.0" prefWidth="343.0" />
-                        <TextArea fx:id="messageField" layoutX="14.0" layoutY="101.0" prefHeight="205.0" prefWidth="551.0" />
-                        <Button fx:id="sendButton" defaultButton="true" layoutX="503.0" layoutY="316.0" mnemonicParsing="false" onAction="#sendMessage" prefHeight="25.0" prefWidth="62.0" text="Send" />
-                        <Label fx:id="messageStatus" layoutX="272.0" layoutY="321.0" />
-                        <Button layoutX="393.0" layoutY="316.0" mnemonicParsing="false" text="Save As Draft" />
-                     </children>
-                  </AnchorPane>
                </content></Tab>
         </tabs>
       </TabPane>

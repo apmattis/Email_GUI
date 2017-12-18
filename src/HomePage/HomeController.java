@@ -29,6 +29,7 @@ public class HomeController {
     public TextField toAddrField;
     public TextField subjectField;
     public TextArea messageField;
+    public TextArea messageContents;
     public Button sendButton;
     public Tab inboxTab;
     public ListView<String> inboxList;
@@ -52,9 +53,6 @@ public class HomeController {
                     Main.cm.sendStringData("GET");
                     Main.cm.receiveFile();
 
-
-
-
                     for(File file : files){
                         fList.add(file.getName());
                     }
@@ -63,11 +61,12 @@ public class HomeController {
                     inboxList.setOrientation(Orientation.VERTICAL);
 
                     inboxList.getSelectionModel().selectedItemProperty().addListener(this::messageChanged);
+                    messageContents = new TextArea();
 
                     fileSelection = new VBox();
                     fileSelection.getChildren().addAll(inboxList);
                     inboxPane.add(fileSelection, 0, 0);
-                    inboxPane.add(messageField, 1, 0);
+                    inboxPane.add(messageContents, 1, 0);
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -75,67 +74,64 @@ public class HomeController {
         });
     }
 
-    private void messageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue)
-
-    {
+    private void messageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue){
 
 
         //String oldText = oldValue == null ? "null" : oldValue.toString();
 
         String newText = newValue == null ? "null" : newValue;
-        messageField.clear();
+        messageContents.clear();
 
         try(BufferedReader br = new BufferedReader(new FileReader(String.format("%s/%s", path, newText)))) {
             String line;
             while((line = br.readLine()) != null){
-                messageField.appendText(line);
-                messageField.appendText("\n");
+                messageContents.appendText(line);
+                messageContents.appendText("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
-    public void sendMessage(ActionEvent actionEvent) {
+    public void sendMessage(ActionEvent actionEvent) throws IOException {
+        Main.cm.sendStringData("DATA");
+        Main.cm.flushOut();
+
+        String toAddr = toAddrField.getText(),
+                subject = subjectField.getText(),
+                message = messageField.getText(),
+                auth;
         try {
-            Main.cm.sendStringData("DATA");
-            String toAddr = toAddrField.getText(),
-                    subject = subjectField.getText(),
-                    message = messageField.getText(),
-                    auth;
             Main.cm.sendStringData(toAddr);
             Main.cm.sendStringData(subject);
             Main.cm.sendStringData(message);
             Main.cm.flushOut();
             auth = Main.cm.receiveStringData();
             System.out.println(auth);
-            if(auth.contains("275")){
-                toAddrField.clear();
-                subjectField.clear();
-                messageField.clear();
+            if(!(auth.isEmpty()) && auth.contains("275")){
                 messageStatus.setTextFill(Color.color(0, 1, 0));
                 messageStatus.setText("Message Sent!");
+            }else if(auth.contains("266")){
+                messageStatus.setTextFill(Color.color(1,0, 0));
+                messageStatus.setText("Subject is empty.");
+            }else if(auth.contains("267")){
+                messageStatus.setTextFill(Color.color(1,0, 0));
+                messageStatus.setText("Message is empty.");
             }else if (auth.contains("550")){
                 messageStatus.setTextFill(Color.color(1,0, 0));
                 messageStatus.setText("Send Failed: Recipient does not exist.");
-                auth = Main.cm.receiveStringData();
-                System.out.println(auth);
-            }else if(auth.contains("265")){
+            }else if(auth.contains("500") || !(auth.isEmpty())){
                 messageStatus.setTextFill(Color.color(1,0, 0));
                 messageStatus.setText("Send Failed: Something went wrong.");
-                auth = Main.cm.receiveStringData();
-                System.out.println(auth);
             }
-            auth = Main.cm.receiveStringData();
-            System.out.println(auth);
 
         } catch (IOException e) {
             e.printStackTrace();
+        }  finally {
+            toAddrField.clear();
+            subjectField.clear();
+            messageField.clear();
         }
-
     }
 
     public void closeApp(ActionEvent actionEvent) {

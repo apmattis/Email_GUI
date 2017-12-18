@@ -5,7 +5,6 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
 public class ConnectionManager {
 
@@ -47,16 +46,16 @@ public class ConnectionManager {
     private void connect(){
         try{
             System.out.println("Trying to connect to " + serverName);
-            client = new Socket(serverName, portNum);
+            setClient(new Socket(serverName, portNum));
 
-            if (client.isConnected()) {
+            if (getClient().isConnected()) {
                 System.out.println("Connection successful!");
             }
 
-            OutputStream serverOut = client.getOutputStream();
+            OutputStream serverOut = getClient().getOutputStream();
             out = new DataOutputStream(serverOut);
 
-            InputStream serverIn = client.getInputStream();
+            InputStream serverIn = getClient().getInputStream();
             in = new DataInputStream(serverIn);
 
             out.writeUTF("HELO");
@@ -68,7 +67,7 @@ public class ConnectionManager {
 
     public void receiveFile() {
         try {
-            DataInputStream dis = new DataInputStream(new BufferedInputStream(client.getInputStream()));
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
 
             int numFiles = dis.readInt();
             Path path = Paths.get("out/"+ AuthenticateController.getUser() + "/inbox/");
@@ -100,7 +99,7 @@ public class ConnectionManager {
 
     public void connectionReset(){
         try {
-            client.close();
+            getClient().close();
             connect();
         } catch (IOException e) {
             e.printStackTrace();
@@ -129,5 +128,11 @@ public class ConnectionManager {
     }
 
 
+    public Socket getClient() {
+        return client;
+    }
 
+    public void setClient(Socket client) {
+        this.client = client;
+    }
 }
