@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ConnectionManager {
 
@@ -14,6 +15,8 @@ public class ConnectionManager {
     private static DataOutputStream out;
     private static DataInputStream in;
     private static String serverCode;
+    private static ArrayList<String> fileNames;
+    private static StringBuilder message;
 
 
 //    Thread thread = new Thread(new Runnable() {
@@ -39,7 +42,7 @@ public class ConnectionManager {
 //        }
 //    });
 
-    public void run(){
+    void run(){
         connect();
     }
 
@@ -65,12 +68,57 @@ public class ConnectionManager {
         }
     }
 
+    public ArrayList<String> listMail(){
+        try{
+            setFileNames(new ArrayList<>());
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
+
+            int numFiles = dis.readInt();
+            System.out.printf("Number of Files in inbox: %d%n", numFiles);
+            for(int i = 0; i < numFiles; i++){
+                String fName = dis.readUTF();
+                getFileNames().add(fName);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileNames;
+    }
+
+    public StringBuilder readMail(String path){
+
+        try{
+            sendStringData(path);
+            setMessage(new StringBuilder());
+            String line;
+            int n;
+            byte[] buf = new byte[8192];
+
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
+            long fSize = dis.readLong();
+            System.out.printf("Receiving file: %s of size: %d%n", path, fSize);
+
+            //read file
+            while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
+                line = new String(buf);
+                getMessage().append(line);
+                fSize -= n;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return getMessage();
+
+    }
+
     public void receiveFile() {
         try {
             DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
 
             int numFiles = dis.readInt();
-            Path path = Paths.get("out/"+ AuthenticateController.getUser() + "/inbox/");
+            Path path = Paths.get(String.format("out/%s/inbox/", AuthenticateController.getUser()));
             Files.createDirectories(path);
             String fName = null;
             int n;
@@ -127,12 +175,28 @@ public class ConnectionManager {
         return serverCode;
     }
 
+    private static StringBuilder getMessage() {
+        return message;
+    }
 
-    public Socket getClient() {
+    private static void setMessage(StringBuilder message) {
+        ConnectionManager.message = message;
+    }
+
+
+    private Socket getClient() {
         return client;
     }
 
-    public void setClient(Socket client) {
+    private void setClient(Socket client) {
         this.client = client;
+    }
+
+    private static ArrayList<String> getFileNames() {
+        return fileNames;
+    }
+
+    private void setFileNames(ArrayList<String> fileNames) {
+        ConnectionManager.fileNames = fileNames;
     }
 }

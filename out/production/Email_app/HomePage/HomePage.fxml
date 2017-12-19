@@ -43,27 +43,38 @@
                      </children>
                   </AnchorPane>
                </content></Tab>
-            <Tab fx:id="inboxTab" onSelectionChanged="#getMessages" text="Inbox">
+            <Tab fx:id="inboxTab" text="Inbox">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane fx:id="inboxPane" layoutX="14.0" layoutY="14.0" prefHeight="355.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="inboxPane" hgap="10.0" layoutX="14.0" layoutY="14.0" prefHeight="355.0" prefWidth="600.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="152.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.0" minWidth="10.0" prefWidth="448.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="203.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="405.0" minWidth="10.0" prefWidth="397.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ListView fx:id="inboxList" prefHeight="200.0" prefWidth="200.0" />
+                              <VBox fx:id="fileSelection" prefHeight="200.0" prefWidth="100.0" />
                            </children>
                         </GridPane>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Contacts" />
+            <Tab fx:id="contactsTab" text="Contacts">
+               <content>
+                  <GridPane fx:id="contactsPane">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </content></Tab>
           <Tab fx:id="sentTab" closable="false" text="Sent">
                <content>
                   <GridPane>
