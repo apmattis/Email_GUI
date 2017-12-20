@@ -1,5 +1,8 @@
 package LogInPage;
 
+import HomePage.Message;
+import HomePage.Messages;
+
 import java.io.*;
 import java.net.Socket;
 import java.nio.file.Files;
@@ -15,8 +18,8 @@ public class ConnectionManager {
     private static DataOutputStream out;
     private static DataInputStream in;
     private static String serverCode;
-    private static ArrayList<String> fileNames;
     private static StringBuilder message;
+
 
 
 //    Thread thread = new Thread(new Runnable() {
@@ -68,51 +71,6 @@ public class ConnectionManager {
         }
     }
 
-    public ArrayList<String> listMail(){
-        try{
-            setFileNames(new ArrayList<>());
-            DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
-
-            int numFiles = dis.readInt();
-            System.out.printf("Number of Files in inbox: %d%n", numFiles);
-            for(int i = 0; i < numFiles; i++){
-                String fName = dis.readUTF();
-                getFileNames().add(fName);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fileNames;
-    }
-
-    public StringBuilder readMail(String path){
-
-        try{
-            sendStringData(path);
-            setMessage(new StringBuilder());
-            String line;
-            int n;
-            byte[] buf = new byte[8192];
-
-            DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
-            long fSize = dis.readLong();
-            System.out.printf("Receiving file: %s of size: %d%n", path, fSize);
-
-            //read file
-            while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
-                line = new String(buf);
-                getMessage().append(line);
-                fSize -= n;
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return getMessage();
-
-    }
-
     public void receiveFile() {
         try {
             DataInputStream dis = new DataInputStream(new BufferedInputStream(getClient().getInputStream()));
@@ -157,12 +115,15 @@ public class ConnectionManager {
     public void sendStringData(String str) throws IOException {
         out.writeUTF(str);
     }
+
     public void sendIntData(int num) throws IOException {
         out.writeInt(num);
     }
+
     public String receiveStringData() throws IOException {
         return in.readUTF();
     }
+
     public void flushOut() throws IOException {
         out.flush();
     }
@@ -183,20 +144,11 @@ public class ConnectionManager {
         ConnectionManager.message = message;
     }
 
-
-    private Socket getClient() {
+    public Socket getClient() {
         return client;
     }
 
     private void setClient(Socket client) {
         this.client = client;
-    }
-
-    private static ArrayList<String> getFileNames() {
-        return fileNames;
-    }
-
-    private void setFileNames(ArrayList<String> fileNames) {
-        ConnectionManager.fileNames = fileNames;
     }
 }

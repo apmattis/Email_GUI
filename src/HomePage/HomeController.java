@@ -1,26 +1,20 @@
 package HomePage;
 
 import LogInPage.AuthenticateController;
-import LogInPage.ConnectionManager;
 import LogInPage.Main;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class HomeController {
 
@@ -39,9 +33,10 @@ public class HomeController {
     private ListView<String> inboxList;
     private TextArea messageContents;
     private String path = String.format("db/%s/inbox/", AuthenticateController.getUser());
-    private List<String> fList = new ArrayList<>();
+    private List<String> messageList = new ArrayList<>();
     private StringBuilder message = new StringBuilder();
     private File[] files = new File(path).listFiles();
+    private Messages inbox = new Messages();
 
 
     public void getMessages() {
@@ -54,11 +49,13 @@ public class HomeController {
 
     private void tabEventHandler(){
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
-            if(inboxTab == newTab && fList.isEmpty()) {
+            if(inboxTab == newTab && messageList.isEmpty()) {
                 try {
-                    Main.cm.sendStringData("FETCH");
-                    fList = Main.cm.listMail();
-                    ObservableList<String> fileNames = FXCollections.observableArrayList(fList);
+                    Main.cm.sendStringData("READ");
+                    listMail();
+
+                    messageList = inbox.getMessageNames();
+                    ObservableList<String> fileNames = FXCollections.observableArrayList(messageList);
                     inboxList = new ListView<>(fileNames);
                     inboxList.setOrientation(Orientation.VERTICAL);
 
@@ -80,13 +77,63 @@ public class HomeController {
 
         String newText = newValue == null ? "null" : newValue;
         messageContents.clear();
-        try {
-            Main.cm.sendStringData("READ");
-            message = Main.cm.readMail(String.format("%s%s", path, newText));
-            messageContents.appendText(message.toString());
+        message = inbox.getMessageMap().get(newText);
+        messageContents.appendText(message.toString());
+    }
+
+    public void listMail(){
+        try{
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
+
+            int numFiles = dis.readInt();
+            for(int i = 0; i < numFiles; i++){
+                String fName = dis.readUTF();
+                if(!inbox.containsMessageName(fName)){
+                    Message message = new Message(fName);
+                    inbox.addMessage(message.getName());
+                    String line;
+                    int n;
+                    byte[] buf = new byte[8192];
+
+                    long fSize = dis.readLong();
+                    //read file
+                    while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
+                        line = new String(buf);
+                        message.setContents(new StringBuilder().append(line));
+                        inbox.addMessageToMap(message.getName(), message.getContents());
+                        fSize -= n;
+                    }
+                }
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public StringBuilder readMail(String path){
+
+        try{
+            Main.cm.sendStringData(path);
+            String line;
+            int n;
+            byte[] buf = new byte[8192];
+
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
+            long fSize = dis.readLong();
+            //read file
+            while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
+                line = new String(buf);
+                inbox.setMessageContents(message.append(line));
+                inbox.addMessageToMap(inbox.getMessage(path), inbox.getMessageContents());
+                fSize -= n;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return inbox.getMessageContents();
+
     }
 
     public void sendMessage(ActionEvent actionEvent) throws IOException {
