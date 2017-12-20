@@ -1,6 +1,5 @@
 package HomePage;
 
-import LogInPage.AuthenticateController;
 import LogInPage.Main;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,62 +25,91 @@ public class HomeController {
     public Button sendButton;
     public Tab inboxTab;
     public Tab sentTab;
-    public VBox fileSelection;
+    public VBox inboxFileSelection;
+    public VBox outboxFileSelection;
     public GridPane inboxPane;
     public TabPane tabPane;
+    public GridPane outBoxPane;
 
     private ListView<String> inboxList;
-    private TextArea messageContents;
-    private String path = String.format("db/%s/inbox/", AuthenticateController.getUser());
-    private List<String> messageList = new ArrayList<>();
-    private StringBuilder message = new StringBuilder();
-    private File[] files = new File(path).listFiles();
+    private ListView<String> outboxList;
+    private TextArea inboxMessageContents;
+    private TextArea outboxMessageContents;
+    private List<String> inboxMessageList = new ArrayList<>();
+    private List<String> outboxMessageList = new ArrayList<>();
     private Messages inbox = new Messages();
+    private Messages outbox = new Messages();
+    private int initInboxCount, initOutboxCount, newInboxCount = 0, newOutboxCount = 0;
 
 
     public void getMessages() {
         tabEventHandler();
     }
 
-    public void getContacts(){
-
-    }
-
     private void tabEventHandler(){
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
-            if(inboxTab == newTab && messageList.isEmpty()) {
+            if(inboxTab == newTab && inboxMessageList.isEmpty()) {
                 try {
-                    Main.cm.sendStringData("READ");
-                    listMail();
+                    Main.cm.sendStringData("INBX");
+                    listInboxMail();
 
-                    messageList = inbox.getMessageNames();
-                    ObservableList<String> fileNames = FXCollections.observableArrayList(messageList);
+                    inboxMessageList = inbox.getMessageNames();
+                    ObservableList<String> fileNames = FXCollections.observableArrayList(inboxMessageList);
                     inboxList = new ListView<>(fileNames);
                     inboxList.setOrientation(Orientation.VERTICAL);
 
-                    inboxList.getSelectionModel().selectedItemProperty().addListener(this::messageChanged);
-                    messageContents = new TextArea();
+                    inboxList.getSelectionModel().selectedItemProperty().addListener(this::inboxMessageChanged);
+                    inboxMessageContents = new TextArea();
 
-                    fileSelection = new VBox();
-                    fileSelection.getChildren().addAll(inboxList);
-                    inboxPane.add(fileSelection, 0, 0);
-                    inboxPane.add(messageContents, 1, 0);
+                    inboxFileSelection = new VBox();
+                    inboxFileSelection.getChildren().addAll(inboxList);
+                    inboxPane.add(inboxFileSelection, 0, 0);
+                    inboxPane.add(inboxMessageContents, 1, 0);
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else if(sentTab == newTab && (outboxMessageList.isEmpty() || (outboxMessageList.size() > initOutboxCount))){
+                try {
+                    Main.cm.sendStringData("OTBX");
+                    listOutboxMail();
+
+                    outboxMessageList = outbox.getMessageNames();
+                    ObservableList<String> fileNames = FXCollections.observableArrayList(outboxMessageList);
+                    outboxList = new ListView<>(fileNames);
+                    outboxList.setOrientation(Orientation.VERTICAL);
+
+                    outboxList.getSelectionModel().selectedItemProperty().addListener(this::outboxMessageChanged);
+                    outboxMessageContents = new TextArea();
+
+                    outboxFileSelection = new VBox();
+                    outboxFileSelection.getChildren().addAll(outboxList);
+                    outBoxPane.add(outboxFileSelection, 0, 0);
+                    outBoxPane.add(outboxMessageContents, 1, 0);
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
     }
 
-    private void messageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue){
+    private void inboxMessageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue){
 
         String newText = newValue == null ? "null" : newValue;
-        messageContents.clear();
-        message = inbox.getMessageMap().get(newText);
-        messageContents.appendText(message.toString());
+        inboxMessageContents.clear();
+        StringBuilder message = inbox.getMessageMap().get(newText);
+        inboxMessageContents.appendText(message.toString());
     }
 
-    public void listMail(){
+    private void outboxMessageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue){
+
+        String newText = newValue == null ? "null" : newValue;
+        outboxMessageContents.clear();
+        StringBuilder message = outbox.getMessageMap().get(newText);
+        outboxMessageContents.appendText(message.toString());
+    }
+
+    public void listInboxMail(){
         try{
             DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
 
@@ -111,29 +139,36 @@ public class HomeController {
         }
     }
 
-    public StringBuilder readMail(String path){
-
+    public void listOutboxMail(){
         try{
-            Main.cm.sendStringData(path);
-            String line;
-            int n;
-            byte[] buf = new byte[8192];
-
             DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
-            long fSize = dis.readLong();
-            //read file
-            while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
-                line = new String(buf);
-                inbox.setMessageContents(message.append(line));
-                inbox.addMessageToMap(inbox.getMessage(path), inbox.getMessageContents());
-                fSize -= n;
+
+            int numFiles = dis.readInt();
+            for(int i = 0; i < numFiles; i++){
+                String fName = dis.readUTF();
+                if(!outbox.containsMessageName(fName)){
+                    Message message = new Message(fName);
+                    outbox.addMessage(message.getName());
+                    String line;
+                    int n;
+                    byte[] buf = new byte[8192];
+
+                    long fSize = dis.readLong();
+                    //read file
+                    while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
+                        line = new String(buf);
+                        message.setContents(new StringBuilder().append(line));
+                        outbox.addMessageToMap(message.getName(), message.getContents());
+                        fSize -= n;
+                    }
+                    initOutboxCount++;
+                }
             }
+            newOutboxCount = initOutboxCount;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return inbox.getMessageContents();
-
     }
 
     public void sendMessage(ActionEvent actionEvent) throws IOException {
@@ -156,6 +191,7 @@ public class HomeController {
                 toAddrField.clear();
                 subjectField.clear();
                 messageField.clear();
+                newOutboxCount++;
             }else if(auth.contains("266")){
                 messageStatus.setTextFill(Color.color(1,0, 0));
                 messageStatus.setText("Subject is empty.");
@@ -182,6 +218,10 @@ public class HomeController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getContacts(){
+
     }
 
 }
