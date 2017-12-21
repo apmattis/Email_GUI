@@ -4,18 +4,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePage.HomeController">
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePage.HomeController">
    <children>
       <MenuBar prefHeight="29.0" prefWidth="600.0" AnchorPane.bottomAnchor="401.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="menuFile" mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="deleteMessage" mnemonicParsing="false" onAction="#deleteMessage" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -25,7 +26,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane fx:id="tabPane" layoutX="14.0" layoutY="42.0" prefHeight="388.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
+      <TabPane fx:id="tabPane" layoutY="42.0" prefHeight="388.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
         <tabs>
             <Tab fx:id="composeTab" closable="false" onSelectionChanged="#getMessages" text="Compose">
                <content>
@@ -33,7 +34,7 @@
                      <children>
                         <ChoiceBox layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
                         <Label layoutX="136.0" layoutY="19.0" text="To:" />
-                        <TextField fx:id="toAddrField" layoutX="221.0" layoutY="14.0" prefHeight="25.0" prefWidth="343.0" />
+                        <TextField fx:id="recipientField" layoutX="221.0" layoutY="14.0" prefHeight="25.0" prefWidth="343.0" />
                         <Label layoutX="136.0" layoutY="65.0" text="Subject:" />
                         <TextField fx:id="subjectField" layoutX="221.0" layoutY="60.0" prefHeight="25.0" prefWidth="343.0" />
                         <TextArea fx:id="messageField" layoutX="14.0" layoutY="101.0" prefHeight="205.0" prefWidth="551.0" />
@@ -42,12 +43,13 @@
                         <Button layoutX="393.0" layoutY="316.0" mnemonicParsing="false" text="Save As Draft" />
                      </children>
                   </AnchorPane>
-               </content></Tab>
+               </content>
+            </Tab>
             <Tab fx:id="inboxTab" text="Inbox">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane fx:id="inboxPane" hgap="10.0" layoutX="14.0" layoutY="14.0" prefHeight="355.0" prefWidth="600.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="inboxPane" hgap="5.0" layoutX="14.0" layoutY="14.0" prefHeight="355.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="203.0" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="405.0" minWidth="10.0" prefWidth="397.0" />
@@ -65,35 +67,44 @@
             </Tab>
             <Tab fx:id="contactsTab" text="Contacts">
                <content>
-                  <GridPane fx:id="contactsPane">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-               </content></Tab>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="newContactField" layoutX="121.0" layoutY="336.0" />
+                        <Button fx:id="addContactButton" defaultButton="true" layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#addContact" text="Add Contact" />
+                        <GridPane fx:id="contactsPane" layoutX="14.0" layoutY="14.0" prefHeight="314.0" prefWidth="821.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="231.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="594.0" minWidth="10.0" prefWidth="590.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
           <Tab fx:id="sentTab" closable="false" text="Sent">
                <content>
-                  <GridPane fx:id="outBoxPane">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="181.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="419.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <AnchorPane>
                      <children>
-                        <VBox fx:id="outboxFileSelection" prefHeight="200.0" prefWidth="100.0" />
+                        <GridPane fx:id="outBoxPane" hgap="5.0" prefHeight="355.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="200.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="395.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox fx:id="outboxFileSelection" prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                        </GridPane>
                      </children>
-                  </GridPane>
+                  </AnchorPane>
                </content>
-               <graphic>
-                  <Button mnemonicParsing="false" onAction="#refreshOutbox" text="Refresh" />
-               </graphic></Tab>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
-</AnchorPane>
+</Pane>

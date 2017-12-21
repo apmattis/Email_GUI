@@ -10,16 +10,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeController {
-
+public class HomeController{
     public GridPane contactsPane;
     public Label messageStatus;
-    public TextField toAddrField;
+    public TextField recipientField;
     public TextField subjectField;
     public TextArea messageField;
     public Button sendButton;
@@ -30,6 +30,12 @@ public class HomeController {
     public GridPane inboxPane;
     public TabPane tabPane;
     public GridPane outBoxPane;
+    public MenuItem logout;
+    public MenuItem deleteMessage;
+    public Tab contactsTab;
+    public Button addContactButton;
+    public TextField newContactField;
+    private Stage newPrimaryStage = new Stage();
 
     private ListView<String> inboxList;
     private ListView<String> outboxList;
@@ -40,6 +46,7 @@ public class HomeController {
     private Messages inbox = new Messages();
     private Messages outbox = new Messages();
     private int initInboxCount, initOutboxCount, newInboxCount = 0, newOutboxCount = 0;
+
 
 
     public void getMessages() {
@@ -172,14 +179,14 @@ public class HomeController {
     }
 
     public void sendMessage(ActionEvent actionEvent) throws IOException {
-        String toAddr = toAddrField.getText(),
+        String recipient = recipientField.getText(),
                 subject = subjectField.getText(),
                 message = messageField.getText(),
                 auth;
         try {
             Main.cm.sendStringData("DATA");
             Main.cm.flushOut();
-            Main.cm.sendStringData(toAddr);
+            Main.cm.sendStringData(recipient);
             Main.cm.sendStringData(subject);
             Main.cm.sendStringData(message);
             Main.cm.flushOut();
@@ -188,7 +195,7 @@ public class HomeController {
             if(!(auth.isEmpty()) && auth.contains("275")){
                 messageStatus.setTextFill(Color.color(0, 1, 0));
                 messageStatus.setText("Message Sent!");
-                toAddrField.clear();
+                recipientField.clear();
                 subjectField.clear();
                 messageField.clear();
                 newOutboxCount++;
@@ -224,6 +231,30 @@ public class HomeController {
 
     }
 
+    public void logOut(ActionEvent actionEvent) {
+        try {
+            Main.cm.connectionReset();
+            Main.resetScene("/LogInPage/Authenticate.fxml", "Log In");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteMessage(ActionEvent actionEvent) {
+        
+    }
+
+    public void addContact(ActionEvent actionEvent) {
+        ;
+    }
+
+    public Stage getNewPrimaryStage() {
+        return newPrimaryStage;
+    }
+
+    public void setNewPrimaryStage(Stage newPrimaryStage) {
+        this.newPrimaryStage = newPrimaryStage;
+    }
 }
 
 

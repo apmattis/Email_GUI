@@ -1,30 +1,22 @@
 package LogInPage;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class AuthenticateController {
 
-    public Pane newAccountPane;
+
     public TextField userName;
     private static String user;
     public PasswordField pass;
     public Label authLabel;
-    public TextField newUsername;
-    public PasswordField newPass;
-    public PasswordField confirmPass;
-    public Label notificationLabel;
     public Button logInButton;
-    private String auth = null;
+    public Hyperlink newUserLink;
+    public Stage newStage;
 
 
     public void logIn(ActionEvent actionEvent) throws IOException {
@@ -34,7 +26,7 @@ public class AuthenticateController {
         try {
             Main.cm.sendStringData("AUTH");
             Main.cm.flushOut();
-            auth = Main.cm.receiveStringData();
+            String auth = Main.cm.receiveStringData();
             System.out.println(auth);
             if(user.isEmpty() && passWord.isEmpty()){
                 authLabel.setTextFill(Color.color(1,0,0));
@@ -52,51 +44,17 @@ public class AuthenticateController {
                     authLabel.setTextFill(Color.color(1,0,0));
                     authLabel.setText("Username/Password is incorrect. Please try again.");
                 }else{
-                    authLabel.setTextFill(Color.color(0,1,0));
-                    authLabel.setText("Welcome back " + user + "!");
+                    setNewStage(new Stage());
                     Main.resetScene("/HomePage/HomePage.fxml", "Home");
                 }
             }
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void createAccount(ActionEvent actionEvent) throws IOException {
-        Main.cm.sendStringData("CREATE");
-        auth = Main.cm.receiveStringData();
-        System.out.println(auth);
-        String newUser = newUsername.getText(),
-                newPassword = newPass.getText(),
-                confirmNewPassword = confirmPass.getText();
 
-        try {
-            Main.cm.sendStringData(newUser);
-            Main.cm.sendStringData(newPassword);
-            Main.cm.sendStringData(confirmNewPassword);
-            auth = Main.cm.receiveStringData();
-            System.out.println(auth);
-            if (auth.contains("337")) {
-                notificationLabel.setTextFill(Color.color(0, 1, 0));
-                notificationLabel.setText("New account created!");
-                newUsername.clear();
-                newPass.clear();
-                confirmPass.clear();
-            }else {
-                notificationLabel.setTextFill(Color.color(1, 0, 0));
-                notificationLabel.setText("PASSWORDS DO NOT MATCH");
-                newPass.clear();
-                confirmPass.clear();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
     public static String getUser() {
         return user;
@@ -104,6 +62,32 @@ public class AuthenticateController {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public void closeApp(ActionEvent actionEvent) {
+        try {
+            Main.cm.sendStringData("QUIT");
+            System.exit(0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setNewStage(Stage stage){
+        this.newStage = stage;
+    }
+
+    public Stage getNewStage(){
+        return newStage;
+    }
+
+    public void newAccountWindow(ActionEvent actionEvent) {
+        try {
+            Main.resetScene("/NewAccountPage/NewAccount.fxml", "New Account");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
