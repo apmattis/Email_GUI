@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="412.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewAccountPage.NewAccountController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="NewAccountPage.NewAccountController">
    <children>
       <Pane layoutX="14.0" layoutY="34.0" prefHeight="366.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
          <children>
@@ -23,13 +22,13 @@
             <TextField fx:id="newUsername" layoutX="14.0" layoutY="84.0" />
             <PasswordField fx:id="newPass" layoutX="14.0" layoutY="151.0" />
             <PasswordField fx:id="confirmPass" layoutX="14.0" layoutY="292.0" />
-            <Button layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#createAccount" text="Sign Up" />
+            <Button layoutX="14.0" layoutY="324.0" mnemonicParsing="false" onAction="#createAccount" text="Sign Up" />
             <Label layoutX="14.0" layoutY="176.0" text="Password must include:&#10;- at least 8 characters&#10;- at least 1 uppercase letter&#10;- at least 1 digit&#10;- at least 1 special character (!@#$%&amp;*)&#10;- no spaces">
                <font>
                   <Font size="12.0" />
                </font>
             </Label>
-            <Label fx:id="notificationLabel" layoutX="92.0" layoutY="349.0" />
+            <Label fx:id="notificationLabel" layoutX="82.0" layoutY="329.0" />
          </children>
       </Pane>
       <MenuBar prefHeight="29.0" prefWidth="600.0">

@@ -2,6 +2,7 @@ package LogInPage;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -82,7 +83,7 @@ public class AuthenticateController {
         return newStage;
     }
 
-    public void newAccountWindow(ActionEvent actionEvent) {
+    public void newAccountWindow(MouseEvent actionEvent) {
         try {
             Main.resetScene("/NewAccountPage/NewAccount.fxml", "New Account");
         } catch (Exception e) {

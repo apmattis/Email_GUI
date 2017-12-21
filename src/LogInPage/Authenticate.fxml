@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogInPage.AuthenticateController">
    <children>
       <MenuBar prefHeight="29.0" prefWidth="500.0">
@@ -38,6 +40,6 @@
          </font>
       </Label>
       <Label fx:id="authLabel" layoutX="217.0" layoutY="276.0" />
-      <Hyperlink fx:id="newUserLink" layoutX="310.0" layoutY="224.0" onAction="#newAccountWindow" text="New User?" />
+      <Hyperlink fx:id="newUserLink" layoutX="310.0" layoutY="224.0" onMouseClicked="#newAccountWindow" text="New User?" />
    </children>
 </Pane>
