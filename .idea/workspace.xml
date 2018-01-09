@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CSS/background.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CSS/generic.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Email_app/HomePage/HomePage.fxml" afterPath="$PROJECT_DIR$/out/production/Email_app/HomePage/HomePage.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Email_app/LogInPage/Authenticate.fxml" afterPath="$PROJECT_DIR$/out/production/Email_app/LogInPage/Authenticate.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Email_app/NewAccountPage/NewAccount.fxml" afterPath="$PROJECT_DIR$/out/production/Email_app/NewAccountPage/NewAccount.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HomePage/HomeController.java" afterPath="$PROJECT_DIR$/src/HomePage/HomeController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HomePage/HomePage.fxml" afterPath="$PROJECT_DIR$/src/HomePage/HomePage.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LogInPage/Authenticate.fxml" afterPath="$PROJECT_DIR$/src/LogInPage/Authenticate.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LogInPage/AuthenticateController.java" afterPath="$PROJECT_DIR$/src/LogInPage/AuthenticateController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LogInPage/Main.java" afterPath="$PROJECT_DIR$/src/LogInPage/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml" afterPath="$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NewAccountPage/NewAccountController.java" afterPath="$PROJECT_DIR$/src/NewAccountPage/NewAccountController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,53 +77,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LogInPage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+            <state relative-caret-position="33">
+              <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+              <folding>
+                <element signature="method#resetScene#0;class#Main#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePage.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HomePage/HomePage.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <marker date="1515471424287" expanded="true" signature="2946:4187" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="2970:4168" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3067:4143" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3099:4111" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3344:4078" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3390:3675" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3718:3862" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="3900:4042" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4241:4748" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4266:4729" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4334:4703" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4366:4671" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4809:5958" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4834:5939" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4865:5913" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="4897:5881" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="5113:5848" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="5159:5444" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="5487:5631" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="5669:5812" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6008:8012" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6032:7993" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6129:7968" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6161:7936" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6366:7903" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6412:6697" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6740:6884" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="6922:7867" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="7156:7828" ph="..." />
+                <marker date="1515471424287" expanded="true" signature="7200:7784" ph="..." />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generic.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CSS/generic.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HomePage/HomeController.java">
+      <file leaf-file-name="Authenticate.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LogInPage/Authenticate.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="236" column="12" lean-forward="false" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
-              <folding>
-                <element signature="method#tabEventHandler#0;class#HomeController#0" expanded="false" />
-                <element signature="method#inboxMessageChanged#0;class#HomeController#0" expanded="false" />
-                <element signature="method#outboxMessageChanged#0;class#HomeController#0" expanded="false" />
-                <element signature="method#listInboxMail#0;class#HomeController#0" expanded="false" />
-                <element signature="method#listOutboxMail#0;class#HomeController#0" expanded="false" />
-                <element signature="method#sendMessage#0;class#HomeController#0" expanded="false" />
-                <element signature="method#getContacts#0;class#HomeController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewAccount.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <marker date="1513824034639" expanded="true" signature="1745:1772" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1745:1786" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1745:2453" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1745:2467" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1838:2438" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1854:2421" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1907:2051" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="1927:2033" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="2104:2228" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="2124:2210" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="2281:2404" ph="..." />
-                <marker date="1513824034639" expanded="true" signature="2301:2386" ph="..." />
-              </folding>
+            <state relative-caret-position="114">
+              <caret line="37" column="119" lean-forward="false" selection-start-line="37" selection-start-column="119" selection-end-line="37" selection-end-column="119" />
+              <folding />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
@@ -128,25 +159,35 @@
       <file leaf-file-name="AuthenticateController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LogInPage/AuthenticateController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+            <state relative-caret-position="-126">
+              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="17" />
               <folding>
-                <element signature="method#closeApp#0;class#AuthenticateController#0" expanded="false" />
+                <element signature="method#logIn#0;class#AuthenticateController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Authenticate.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LogInPage/Authenticate.fxml">
+      <file leaf-file-name="NewAccount.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="42" column="87" lean-forward="true" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
+            <state relative-caret-position="180">
+              <caret line="10" column="93" lean-forward="false" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewAccountController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccountController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -215,17 +256,21 @@
         <option value="$PROJECT_DIR$/src/HomePage/Messages.java" />
         <option value="$PROJECT_DIR$/src/LogInPage/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/HomePage/Message.java" />
-        <option value="$PROJECT_DIR$/src/HomePage/HomePage.fxml" />
         <option value="$PROJECT_DIR$/src/LogInPage/NewAccount.fxml" />
         <option value="$PROJECT_DIR$/src/LogInPage/NewAccountController.java" />
         <option value="$PROJECT_DIR$/src/LogInPage/NewAccount2.fxml" />
         <option value="$PROJECT_DIR$/src/CreateAccountPage/NewAccountController.java" />
-        <option value="$PROJECT_DIR$/src/LogInPage/Authenticate.fxml" />
-        <option value="$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml" />
-        <option value="$PROJECT_DIR$/src/LogInPage/AuthenticateController.java" />
-        <option value="$PROJECT_DIR$/src/HomePage/HomeController.java" />
         <option value="$PROJECT_DIR$/src/LogInPage/Main.java" />
+        <option value="$PROJECT_DIR$/src/HomePage/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/LogInPage/auth.css" />
         <option value="$PROJECT_DIR$/src/NewAccountPage/NewAccountController.java" />
+        <option value="$PROJECT_DIR$/src/CSS/new.css" />
+        <option value="$PROJECT_DIR$/src/LogInPage/AuthenticateController.java" />
+        <option value="$PROJECT_DIR$/src/LogInPage/Authenticate.fxml" />
+        <option value="$PROJECT_DIR$/src/CSS/auth.css" />
+        <option value="$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml" />
+        <option value="$PROJECT_DIR$/src/HomePage/HomePage.fxml" />
+        <option value="$PROJECT_DIR$/src/CSS/generic.css" />
       </list>
     </option>
   </component>
@@ -261,9 +306,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -275,6 +319,12 @@
               <item name="Email_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="Email_app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Email_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Email_app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CSS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Email_app" type="b2602c69:ProjectViewProjectNode" />
@@ -298,7 +348,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,6 +385,7 @@
       <recent name="groovy.util.GroovyTestCase" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/CSS" />
       <recent name="$PROJECT_DIR$/src/CreateAccountPage" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -542,6 +594,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-4" width="1311" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -550,15 +603,17 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Anonymous Apex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964426" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4230171" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4525661" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2505929" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25454545" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="SOQL Query" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980237" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Log Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -577,6 +632,7 @@
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964426" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281493" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -633,7 +689,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/HomePage/HomeController.java</url>
-          <line>57</line>
+          <line>67</line>
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
@@ -641,7 +697,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="66" />
+      <option name="time" value="69" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -650,27 +706,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/LogInPage/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LogInPage/AuthenticateController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/LogInPage/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/LogInPage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#resetScene#0;class#Main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -686,7 +729,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#resetScene#0;class#Main#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -831,31 +876,31 @@
         <state relative-caret-position="828">
           <caret line="46" column="60" lean-forward="false" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-            <element signature="e#749#750#0" expanded="true" />
-            <element signature="e#792#793#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
-            <element signature="e#1202#1203#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1402#1403#0" expanded="true" />
-            <element signature="e#1463#1464#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1572#1573#0" expanded="true" />
-            <element signature="e#1616#1617#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#456#457#0" expanded="false" />
+            <element signature="e#506#507#0" expanded="false" />
+            <element signature="e#575#576#0" expanded="false" />
+            <element signature="e#624#625#0" expanded="false" />
+            <element signature="e#665#666#0" expanded="false" />
+            <element signature="e#707#708#0" expanded="false" />
+            <element signature="e#749#750#0" expanded="false" />
+            <element signature="e#792#793#0" expanded="false" />
+            <element signature="e#836#837#0" expanded="false" />
+            <element signature="e#881#882#0" expanded="false" />
+            <element signature="e#930#931#0" expanded="false" />
+            <element signature="e#968#969#0" expanded="false" />
+            <element signature="e#1037#1038#0" expanded="false" />
+            <element signature="e#1091#1092#0" expanded="false" />
+            <element signature="e#1135#1136#0" expanded="false" />
+            <element signature="e#1202#1203#0" expanded="false" />
+            <element signature="e#1252#1253#0" expanded="false" />
+            <element signature="e#1287#1288#0" expanded="false" />
+            <element signature="e#1354#1355#0" expanded="false" />
+            <element signature="e#1402#1403#0" expanded="false" />
+            <element signature="e#1463#1464#0" expanded="false" />
+            <element signature="e#1496#1497#0" expanded="false" />
+            <element signature="e#1572#1573#0" expanded="false" />
+            <element signature="e#1616#1617#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -877,23 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LogInPage/ConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="71" column="5" lean-forward="false" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
-          <folding>
-            <element signature="e#555#604#0" expanded="false" />
-            <element signature="method#connect#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#receiveFile#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#connectionReset#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#sendStringData#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#sendIntData#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#receiveStringData#0;class#ConnectionManager#0" expanded="false" />
-            <element signature="method#flushOut#0;class#ConnectionManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/com/sun/javafx/scene/control/skin/MenuBarSkin.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -909,64 +937,45 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LogInPage/NewAccount2.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/HomePage/HomePage.fxml">
+    <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount1.fxml" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/application/Application.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="367">
+          <caret line="52" column="62" lean-forward="true" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount1.fxml">
+    <entry file="file://$PROJECT_DIR$/src/LogInPage/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        <state relative-caret-position="558">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <marker date="1513824034639" expanded="true" signature="1745:1772" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1745:1786" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1745:2453" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1745:2467" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1838:2438" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1854:2421" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1907:2051" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="1927:2033" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="2104:2228" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="2124:2210" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="2281:2404" ph="..." />
-            <marker date="1513824034639" expanded="true" signature="2301:2386" ph="..." />
+            <element signature="e#555#604#0" expanded="false" />
+            <element signature="method#receiveFile#0;class#ConnectionManager#0" expanded="false" />
+            <element signature="method#connectionReset#0;class#ConnectionManager#0" expanded="false" />
+            <element signature="method#sendStringData#0;class#ConnectionManager#0" expanded="false" />
+            <element signature="method#sendIntData#0;class#ConnectionManager#0" expanded="false" />
+            <element signature="method#receiveStringData#0;class#ConnectionManager#0" expanded="false" />
+            <element signature="method#flushOut#0;class#ConnectionManager#0" expanded="false" />
           </folding>
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HomePage/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="236" column="12" lean-forward="false" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
+        <state relative-caret-position="1584">
+          <caret line="133" column="0" lean-forward="false" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
-            <element signature="method#tabEventHandler#0;class#HomeController#0" expanded="false" />
             <element signature="method#inboxMessageChanged#0;class#HomeController#0" expanded="false" />
             <element signature="method#outboxMessageChanged#0;class#HomeController#0" expanded="false" />
             <element signature="method#listInboxMail#0;class#HomeController#0" expanded="false" />
             <element signature="method#listOutboxMail#0;class#HomeController#0" expanded="false" />
             <element signature="method#sendMessage#0;class#HomeController#0" expanded="false" />
+            <element signature="method#closeApp#0;class#HomeController#0" expanded="false" />
             <element signature="method#getContacts#0;class#HomeController#0" expanded="false" />
+            <element signature="method#logOut#0;class#HomeController#0" expanded="false" />
+            <element signature="method#deleteMessage#0;class#HomeController#0" expanded="false" />
+            <element signature="method#saveAsDraft#0;class#HomeController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -974,19 +983,25 @@
     <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccountController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="36" column="16" lean-forward="true" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
+          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LogInPage/AuthenticateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126">
+          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2675#2676#0" expanded="true" />
-            <element signature="e#2729#2730#0" expanded="true" />
+            <element signature="method#logIn#0;class#AuthenticateController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LogInPage/Authenticate.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="42" column="87" lean-forward="true" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
+        <state relative-caret-position="114">
+          <caret line="37" column="119" lean-forward="false" selection-start-line="37" selection-start-column="119" selection-end-line="37" selection-end-column="119" />
           <folding />
         </state>
       </provider>
@@ -994,28 +1009,81 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LogInPage/AuthenticateController.java">
+    <entry file="file://$PROJECT_DIR$/src/LogInPage/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="86" column="13" lean-forward="true" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+        <state relative-caret-position="33">
+          <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
           <folding>
-            <element signature="method#closeApp#0;class#AuthenticateController#0" expanded="false" />
+            <element signature="method#resetScene#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/application/Application.class">
+    <entry file="file://$PROJECT_DIR$/src/CSS/new.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="52" column="62" lean-forward="true" selection-start-line="52" selection-start-column="62" selection-end-line="52" selection-end-column="62" />
+        <state relative-caret-position="360">
+          <caret line="20" column="36" lean-forward="true" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/LogInPage/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/NewAccountPage/NewAccount.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+        <state relative-caret-position="180">
+          <caret line="10" column="93" lean-forward="false" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HomePage/HomePage.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <marker date="1515471424287" expanded="true" signature="2946:4187" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="2970:4168" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3067:4143" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3099:4111" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3344:4078" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3390:3675" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3718:3862" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="3900:4042" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4241:4748" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4266:4729" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4334:4703" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4366:4671" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4809:5958" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4834:5939" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4865:5913" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="4897:5881" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="5113:5848" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="5159:5444" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="5487:5631" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="5669:5812" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6008:8012" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6032:7993" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6129:7968" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6161:7936" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6366:7903" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6412:6697" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6740:6884" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="6922:7867" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="7156:7828" ph="..." />
+            <marker date="1515471424287" expanded="true" signature="7200:7784" ph="..." />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CSS/generic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding />
         </state>
       </provider>

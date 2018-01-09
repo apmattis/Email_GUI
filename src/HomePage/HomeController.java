@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -35,16 +36,25 @@ public class HomeController{
     public Tab contactsTab;
     public Button addContactButton;
     public TextField newContactField;
-    private Stage newPrimaryStage = new Stage();
+    public Tab draftsTab;
+    public GridPane draftsPane;
+    public VBox draftsFileSelection;
+    public TextField draftToAddressField;
+    public TextField draftSubjectField;
+    public AnchorPane draftsMessagePane;
+    public TextArea draftMessageContents;
 
     private ListView<String> inboxList;
     private ListView<String> outboxList;
+    private ListView<String> draftsList;
     private TextArea inboxMessageContents;
     private TextArea outboxMessageContents;
     private List<String> inboxMessageList = new ArrayList<>();
     private List<String> outboxMessageList = new ArrayList<>();
+    private List<String> draftsMessageList = new ArrayList<>();
     private Messages inbox = new Messages();
     private Messages outbox = new Messages();
+    private Messages drafts = new Messages();
     private int initInboxCount, initOutboxCount, newInboxCount = 0, newOutboxCount = 0;
 
 
@@ -75,7 +85,7 @@ public class HomeController{
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else if(sentTab == newTab && (outboxMessageList.isEmpty() || (outboxMessageList.size() > initOutboxCount))){
+            }else if(sentTab == newTab && outboxMessageList.isEmpty()){
                 try {
                     Main.cm.sendStringData("OTBX");
                     listOutboxMail();
@@ -93,6 +103,28 @@ public class HomeController{
                     outBoxPane.add(outboxFileSelection, 0, 0);
                     outBoxPane.add(outboxMessageContents, 1, 0);
                 }catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }else if(draftsTab == newTab && draftsMessageList.isEmpty()){
+                try{
+                    Main.cm.sendStringData("DRFT");
+                    listDraftMail();
+
+                    draftsMessageList = drafts.getMessageNames();
+                    ObservableList<String> fileNames = FXCollections.observableArrayList(draftsMessageList);
+                    draftsList = new ListView<>(fileNames);
+                    draftsList.setOrientation(Orientation.VERTICAL);
+
+                    draftsList.getSelectionModel().selectedItemProperty().addListener(this::draftsMessageChanged);
+                    draftMessageContents = new TextArea();
+
+                    draftsFileSelection = new VBox();
+                    draftsFileSelection.getChildren().addAll(draftsList);
+//                    draftsMessagePane.getChildren().addAll(draftToAddressField, draftSubjectField, draftMessageContents);
+                    draftsPane.add(draftsFileSelection, 0, 0);
+                    draftsPane.add(draftMessageContents, 1, 0);
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
@@ -114,6 +146,15 @@ public class HomeController{
         outboxMessageContents.clear();
         StringBuilder message = outbox.getMessageMap().get(newText);
         outboxMessageContents.appendText(message.toString());
+    }
+
+    private void draftsMessageChanged(ObservableValue<? extends String> observable, String oldValue, String newValue){
+
+        String newText = newValue == null ? "null" : newValue;
+        draftMessageContents.clear();
+        StringBuilder message = drafts.getMessageMap().get(newText);
+        draftMessageContents.appendText(message.toString());
+        
     }
 
     public void listInboxMail(){
@@ -146,6 +187,40 @@ public class HomeController{
         }
     }
 
+    public void listDraftMail(){
+        try{
+            DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
+
+            int numFiles = dis.readInt();
+            for(int i = 0; i < numFiles; i++){
+                String fName = dis.readUTF();
+//                String toAddr = dis.readUTF();
+//                String subject = dis.readUTF();
+//                draftToAddressField.setText(toAddr);
+//                draftSubjectField.setText(subject);
+                if(!drafts.containsMessageName(fName)){
+                    Message message = new Message(fName);
+                    drafts.addMessage(message.getName());
+                    String line;
+                    int n;
+                    byte[] buf = new byte[8192];
+
+                    long fSize = dis.readLong();
+                    //read file
+                    while(fSize > 0 && (n = dis.read(buf, 0, (int)Math.min(buf.length, fSize))) != -1){
+                        line = new String(buf);
+                        message.setContents(new StringBuilder().append(line));
+                        drafts.addMessageToMap(message.getName(), message.getContents());
+                        fSize -= n;
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void listOutboxMail(){
         try{
             DataInputStream dis = new DataInputStream(new BufferedInputStream(Main.cm.getClient().getInputStream()));
@@ -168,10 +243,8 @@ public class HomeController{
                         outbox.addMessageToMap(message.getName(), message.getContents());
                         fSize -= n;
                     }
-                    initOutboxCount++;
                 }
             }
-            newOutboxCount = initOutboxCount;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -248,12 +321,22 @@ public class HomeController{
         ;
     }
 
-    public Stage getNewPrimaryStage() {
-        return newPrimaryStage;
-    }
+    public void saveAsDraft(ActionEvent actionEvent) {
+        try {
+            String auth;
+            Main.cm.sendStringData("SAVE");
+            Main.cm.sendStringData(recipientField.getText());
+            Main.cm.sendStringData(subjectField.getText());
+            Main.cm.sendStringData(messageField.getText());
+            auth = Main.cm.receiveStringData();
+            if(auth.contains("280")){
+                messageStatus.setTextFill(Color.color(0, 1, 0));
+                messageStatus.setText("Message Saved as Draft.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    public void setNewPrimaryStage(Stage newPrimaryStage) {
-        this.newPrimaryStage = newPrimaryStage;
     }
 }
 

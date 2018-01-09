@@ -18,6 +18,7 @@ public class AuthenticateController {
     public Button logInButton;
     public Hyperlink newUserLink;
     public Stage newStage;
+    public Button newUserButton;
 
 
     public void logIn(ActionEvent actionEvent) throws IOException {

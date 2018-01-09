@@ -5,18 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogInPage.AuthenticateController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="/CSS/generic.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LogInPage.AuthenticateController">
    <children>
       <MenuBar prefHeight="29.0" prefWidth="500.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -40,6 +35,6 @@
          </font>
       </Label>
       <Label fx:id="authLabel" layoutX="217.0" layoutY="276.0" />
-      <Hyperlink fx:id="newUserLink" layoutX="310.0" layoutY="224.0" onMouseClicked="#newAccountWindow" text="New User?" />
+      <Button fx:id="newUserButton" layoutX="297.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#newAccountWindow" text="New User?" />
    </children>
 </Pane>

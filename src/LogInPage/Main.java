@@ -17,15 +17,6 @@ public class Main extends Application {
     private Stage stage;
     private static Stage primaryStage;
 
-    public static Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    public static void setPrimaryStage(Stage primaryStage) {
-        Main.primaryStage = primaryStage;
-    }
-
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Authenticate.fxml"));
@@ -46,7 +37,7 @@ public class Main extends Application {
             Pane page;
             page = loader.load(in);
             getPrimaryStage().setTitle(title);
-            getPrimaryStage().setScene(new Scene(page, 850, 450));
+            getPrimaryStage().setScene(new Scene(page, 600, 430));
             getPrimaryStage().show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -55,11 +46,19 @@ public class Main extends Application {
 
     public static void main(String[] args) { launch(args);  }
 
-    public Stage getStage() {
+    private Stage getStage() {
         return stage;
     }
 
-    public void setStage(Stage stage) {
+    private void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    private static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    private static void setPrimaryStage(Stage primaryStage) {
+        Main.primaryStage = primaryStage;
     }
 }

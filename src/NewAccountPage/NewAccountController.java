@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -15,9 +16,10 @@ public class NewAccountController {
     public PasswordField newPass;
     public PasswordField confirmPass;
     public Label notificationLabel;
+    public Label greetingLabel;
     private Stage newPrimaryStage = new Stage();
 
-    public void createAccount(ActionEvent actionEvent) throws IOException {
+    public void createAccount(MouseEvent actionEvent) throws IOException {
         Main.cm.sendStringData("CREA");
         String auth = Main.cm.receiveStringData();
         System.out.println(auth);
