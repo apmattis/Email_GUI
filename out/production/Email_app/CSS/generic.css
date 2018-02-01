@@ -35,8 +35,6 @@
 .tab-pane
 {
     -fx-tab-min-width:90px;
-    -fx-border-style: solid;
-    -fx-border-width: 0 0 2 0;
 }
 
 .tab{

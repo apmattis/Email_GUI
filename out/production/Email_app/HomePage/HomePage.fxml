@@ -28,7 +28,7 @@
       </MenuBar>
       <TabPane fx:id="tabPane" layoutY="42.0" prefHeight="388.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
         <tabs>
-            <Tab fx:id="composeTab" closable="false" onSelectionChanged="#getMessages" text="Compose">
+            <Tab fx:id="composeTab" closable="false" onSelectionChanged="#tabEventHandler" text="Compose">
                <content>
                   <AnchorPane fx:id="sendMessage" prefHeight="200.0" prefWidth="200.0">
                      <children>

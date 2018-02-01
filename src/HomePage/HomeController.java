@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -63,6 +64,7 @@ public class HomeController{
         tabEventHandler();
     }
 
+    @FXML
     private void tabEventHandler(){
         tabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldTab, newTab) -> {
             if(inboxTab == newTab && inboxMessageList.isEmpty()) {
